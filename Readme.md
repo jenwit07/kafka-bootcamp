@@ -1,25 +1,4 @@
-# Kafka Bootcamp
-For reviewing knowledge.
-
-<img src="./usecase/usecase.gif" alt="usecase" width="50%" height="50%">
-
-## Topics
- - Kafka Basic Core Concept
- - Kafka Partition Concept
- - Kafka Replication Understanding
- - Kafka Group Understanding
-
-# Kafka Basic Core Concept
-```sh
- docker-compose up -d
-
- # create the topic (if it doesn't exist) >> auto.create.topics.enable = true ไม่ต้องทำ
- docker exec -it <kafka_container_id> kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test-topic
-
-node ./core-concept/sample/consumer.js
-node ./core-concept/sample/producer.js
- ```
-
+whew
 # Kafka Partition Concept
 ```sh
  docker-compose up -d
@@ -60,3 +39,26 @@ This approach is useful in scenarios where the order of events is critical, such
 docker-compose up -d
  ```
 3.now you got kafka replication
+
+# Kafka Group Topic Example
+Kafka uses consumer groups to allow a pool of processes to divide the work of consuming and processing records. These groups provide scalability and fault tolerance for Kafka consumers.
+
+## Kafka Consumer Group Example
+
+### Setup
+Start Kafka and Zookeeper using Docker Compose:
+```sh
+# Start Kafka and Zookeeper
+docker-compose up -d
+docker exec -it <kafka_container_id> kafka-topics.sh --alter --bootstrap-server localhost:9092 --topic commission --partitions 2
+docker exec -it <kafka_container_id> kafka-topics.sh --alter --bootstrap-server localhost:9092 --topic payment --partitions 2
+
+node ./kafka-group/commissionConsumer.js 1
+node ./kafka-group/commissionConsumer.js 2
+node ./kafka-group/paymentConsumer.js 1
+node ./kafka-group/paymentConsumer.js 2
+node producer.js
+```
+
+### Observing the Output
+Each consumer will print the messages it receives. You should see the payment messages being consumed by the payment-group consumers and the commission messages being consumed by the commission-group consumers.
