@@ -1,12 +1,13 @@
 # Kafka Bootcamp
-เอาไว้ทวนเวลาต้องใช้
+For reviewing knowledge.
 
-![usecase](./usecase/usecase.gif)
+![usecase](./usecase/usecase.gif){:height="50%" width="50%"}
 
 ## Topics
  - Kafka Basic Core Concept
  - Kafka Partition Concept
  - Kafka Replication Understanding
+ - Kafka Group Understanding
 
 # Kafka Basic Core Concept
 ```sh
@@ -19,7 +20,7 @@ node ./core-concept/sample/consumer.js
 node ./core-concept/sample/producer.js
  ```
 
-# Kafka Partition
+# Kafka Partition Concept
 ```sh
  docker-compose up -d
 
@@ -42,7 +43,7 @@ Producer: When creating orders, the producer uses the user ID as the key to ensu
 Consumer: The consumer processes messages from specific partitions, ensuring that it processes all orders for a given user in sequence. This might involve setting up different consumer instances or groups to handle different partitions, depending on the application's scaling and processing requirements.
 This approach is useful in scenarios where the order of events is critical, such as financial transactions, order processing, or any system where the sequence of events for a particular entity (e.g., user, account) needs to be maintained.
 
-# Kafka Cluster Management
+# Kafka Replication Understanding
  - Link: https://www.youtube.com/watch?v=cAvWjlSGlEU
 
 ### Concept of Kafka Replication
