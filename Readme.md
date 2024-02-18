@@ -1,7 +1,7 @@
 # Kafka Bootcamp
 For reviewing knowledge.
 
-![usecase](./usecase/usecase.gif){:height="50%" width="50%"}
+<img src="./usecase/usecase.gif" alt="usecase" width="50%" height="50%">
 
 ## Topics
  - Kafka Basic Core Concept
