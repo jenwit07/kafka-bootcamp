@@ -1,7 +1,7 @@
 # Kafka Bootcamp
 เอาไว้ทวนเวลาต้องใช้
 
-![usecase](./usecase/usecase.png)
+![usecase](./usecase/usecase.gif)
 
 ## Topics
  - Kafka Basic Core Concept
